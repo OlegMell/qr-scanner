@@ -33,7 +33,7 @@ export class QrScannerComponent implements AfterViewInit {
         this.result.set(result);
         this.cd.detectChanges();
       },
-      { returnDetailedScanResult: true },
+      { returnDetailedScanResult: true, highlightScanRegion: true, highlightCodeOutline: true },
     );
 
     this.qrScanner.start();
