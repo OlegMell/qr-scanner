@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+
+  .header {
+    height: 60px;
+    padding: var(--padding-m);
+
+    &-title {
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+
+  .main {
+    width: 50%;
+    margin: 0 auto;
+    background-color: var(--accent-color);
+    padding: var(--padding-m);
+  }
+}
