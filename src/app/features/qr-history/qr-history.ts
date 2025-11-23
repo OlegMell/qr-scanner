@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { LocalQrStorageService } from '../../core/services/LocalQrStorage.service';
 
 @Component({
   selector: 'app-qr-history',
@@ -7,5 +8,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QrHistory {
+
+  qrCodes = signal(inject(LocalQrStorageService).getQrCodes());
+
+
 
 }

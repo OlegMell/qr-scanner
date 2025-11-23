@@ -1,0 +1,27 @@
+:host {
+  padding: var(--padding-m);
+
+  .qr-history {
+    &-list {
+      list-style: none;
+
+      li {
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: var(--padding-xs);
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(grey, 0.5);
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

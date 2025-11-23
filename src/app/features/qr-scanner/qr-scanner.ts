@@ -1,36 +1,48 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
-  ElementRef, inject,
+  ElementRef,
+  inject,
   signal,
   Signal,
-  viewChild, WritableSignal
+  viewChild,
+  WritableSignal
 } from '@angular/core';
 import QrScanner from 'qr-scanner';
-import { JsonPipe } from '@angular/common';
+import { LocalQrStorageService } from '../../core/services/LocalQrStorage.service';
+import { BaseQrStorage } from '../../core/services/base-qr-storage';
 
 @Component({
   selector: 'app-qr-scanner',
   templateUrl: './qr-scanner.html',
   styleUrl: './qr-scanner.scss',
-  imports: [
-    JsonPipe
-  ],
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QrScannerComponent implements AfterViewInit {
 
+  private readonly qrStorage: BaseQrStorage = inject(LocalQrStorageService);
+
   videoElem: Signal<ElementRef<HTMLVideoElement> | undefined> = viewChild<ElementRef<HTMLVideoElement>>('video');
+
   qrScanner!: QrScanner;
+
   protected result: WritableSignal<any> = signal({});
-  private cd = inject(ChangeDetectorRef);
+  private cd: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   ngAfterViewInit(): void {
     this.qrScanner = new QrScanner(
       this.videoElem()!.nativeElement,
       result => {
         this.result.set(result);
+        try {
+          this.qrStorage.saveQrCodes([ ...this.qrStorage.getQrCodes(), result.data ]);
+        } catch (e) {
+          console.log(e);
+        }
+        this.qrScanner.pause(true);
         this.cd.detectChanges();
       },
       { returnDetailedScanResult: true, highlightScanRegion: true, highlightCodeOutline: true },
