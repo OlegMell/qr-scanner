@@ -1,8 +1,8 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
-  ElementRef,
+  ElementRef, inject,
   signal,
   Signal,
   viewChild, WritableSignal
@@ -24,14 +24,16 @@ export class QrScannerComponent implements AfterViewInit {
   videoElem: Signal<ElementRef<HTMLVideoElement> | undefined> = viewChild<ElementRef<HTMLVideoElement>>('video');
   qrScanner!: QrScanner;
   protected result: WritableSignal<any> = signal({});
+  private cd = inject(ChangeDetectorRef);
 
   ngAfterViewInit(): void {
     this.qrScanner = new QrScanner(
       this.videoElem()!.nativeElement,
       result => {
         this.result.set(result);
+        this.cd.detectChanges();
       },
-      { /* your options or returnDetailedScanResult: true if you're not specifying any other options */ },
+      { returnDetailedScanResult: true },
     );
 
     this.qrScanner.start();

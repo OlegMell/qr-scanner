@@ -1,6 +1,9 @@
 <video #video
-class="qr-scanner"></video>
+       class="qr-scanner"
+></video>
 
-<div>
-  {{result | json}}
-</div>
+@if (result() && result().data) {
+  <a [href]="result().data">
+    go by link
+  </a>
+}
