@@ -1,0 +1,6 @@
+@if (isScannerShown()) {
+  <app-qr-scanner (scanPaused)="handleScanPaused($event)"/>
+}
+
+<app-qr-history/>
+<button qrScanner (click)="toggleQrScanner()"></button>
