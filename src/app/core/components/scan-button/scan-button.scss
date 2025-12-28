@@ -1,0 +1,8 @@
+:host {
+  background-color: light-dark(var(--bg-color-light), var(--bg-color-dark));
+  padding: var(--padding-m);
+  border-radius: 50%;
+  border: 2px solid light-dark(var(--bg-color-dark), var(--bg-color-light));
+  width: max-content;
+  cursor: pointer;
+}

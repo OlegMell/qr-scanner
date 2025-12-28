@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import QrScanner from 'qr-scanner';
 
 import { QrHistory } from '../qr-history/qr-history';
 import { QrScannerComponent } from '../qr-scanner/qr-scanner';
 import { ScanButton } from '../../core/components/scan-button/scan-button';
 import { BaseQrStorage } from '../../core/services/base-qr-storage';
 import { LocalQrStorageService } from '../../core/services/LocalQrStorage.service';
-import QrScanner from 'qr-scanner';
 
 @Component({
   selector: 'app-home',

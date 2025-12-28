@@ -4,15 +4,15 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  inject, output,
+  inject,
+  OnDestroy,
+  output,
   signal,
   Signal,
   viewChild,
   WritableSignal
 } from '@angular/core';
 import QrScanner from 'qr-scanner';
-import { LocalQrStorageService } from '../../core/services/LocalQrStorage.service';
-import { BaseQrStorage } from '../../core/services/base-qr-storage';
 
 @Component({
   selector: 'app-qr-scanner',
@@ -20,7 +20,7 @@ import { BaseQrStorage } from '../../core/services/base-qr-storage';
   styleUrl: './qr-scanner.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QrScannerComponent implements AfterViewInit {
+export class QrScannerComponent implements AfterViewInit, OnDestroy {
   private cd: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   videoElem: Signal<ElementRef<HTMLVideoElement> | undefined> = viewChild<ElementRef<HTMLVideoElement>>('video');
@@ -44,6 +44,10 @@ export class QrScannerComponent implements AfterViewInit {
     );
 
     this.qrScanner.start();
+  }
+
+  ngOnDestroy(): void {
+    this.qrScanner.destroy();
   }
 
 }

@@ -1,5 +1,14 @@
 :host {
   padding: var(--padding-m);
+  padding-top: 25px;
+  position: relative;
+  display: block;
+
+  .edit-button {
+    right: 0;
+    top: -20px;
+    position: absolute;
+  }
 
   .qr-history {
     &-list {

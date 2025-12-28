@@ -1,6 +1,7 @@
 @if (isScannerShown()) {
-  <app-qr-scanner (scanPaused)="handleScanPaused($event)"/>
+  <app-qr-scanner animate.enter="slide-in" animate.leave="slide-out" (scanPaused)="handleScanPaused($event)"/>
 }
 
 <app-qr-history/>
-<button qrScanner (click)="toggleQrScanner()"></button>
+
+<button class="qr-button" qrScanner (click)="toggleQrScanner()"></button>

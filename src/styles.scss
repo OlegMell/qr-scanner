@@ -13,6 +13,8 @@
 }
 
 body {
+  height: 100dvh;
   background-color: light-dark(var(--bg-color-light), var(--bg-color-dark));
   color: light-dark(var(--text-color-primary-light), var(--text-color-primary-dark));
 }
+
