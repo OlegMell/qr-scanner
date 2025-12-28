@@ -5,4 +5,8 @@
   border: 2px solid light-dark(var(--bg-color-dark), var(--bg-color-light));
   width: max-content;
   cursor: pointer;
+
+  svg {
+    fill: light-dark(var(--text-color-primary-light), var(--text-color-primary-dark));
+  }
 }

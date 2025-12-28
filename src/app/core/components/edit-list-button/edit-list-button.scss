@@ -4,4 +4,8 @@
   border: transparent;
   width: max-content;
   cursor: pointer;
+
+  svg {
+    fill: light-dark(var(--text-color-primary-light), var(--text-color-primary-dark));
+  }
 }
