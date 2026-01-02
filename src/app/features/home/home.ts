@@ -21,7 +21,7 @@ import { LocalQrStorageService } from '../../core/services/LocalQrStorage.servic
 export class Home {
   private readonly qrStorage: BaseQrStorage = inject(LocalQrStorageService);
 
-  isScannerShown = signal(false);
+  protected isScannerShown = signal(false);
 
   protected toggleQrScanner(): void {
     this.isScannerShown.update(curr => !curr);
@@ -30,12 +30,10 @@ export class Home {
   protected handleScanPaused({ result }: { result: QrScanner.ScanResult }): void {
     this.isScannerShown.set(false);
 
-    console.debug('[handleScanPaused]', { result });
     try {
       this.qrStorage.saveQrCodes([ ...this.qrStorage.getQrCodes(), result.data ]);
     } catch (e) {
       alert('Failed to save QR code');
-      console.error(e);
     }
   }
 }

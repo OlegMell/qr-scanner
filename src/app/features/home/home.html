@@ -1,5 +1,9 @@
 @if (isScannerShown()) {
-  <app-qr-scanner animate.enter="slide-in" animate.leave="slide-out" (scanPaused)="handleScanPaused($event)"/>
+  <app-qr-scanner (scanPaused)="handleScanPaused($event)"/>
+} @else {
+  <div class="thumbnail">
+    <h2 animate.enter="slide-in" animate.leave="slide-out">Scan QR & save for future</h2>
+  </div>
 }
 
 <app-qr-history/>

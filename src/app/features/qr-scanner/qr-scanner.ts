@@ -21,15 +21,14 @@ import QrScanner from 'qr-scanner';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QrScannerComponent implements AfterViewInit, OnDestroy {
-  private cd: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private readonly cd: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private qrScanner!: QrScanner;
 
-  videoElem: Signal<ElementRef<HTMLVideoElement> | undefined> = viewChild<ElementRef<HTMLVideoElement>>('video');
-
-  qrScanner!: QrScanner;
+  protected videoElem: Signal<ElementRef<HTMLVideoElement> | undefined> = viewChild<ElementRef<HTMLVideoElement>>('video');
 
   protected result: WritableSignal<any> = signal({});
 
-  scanPaused = output<{ result: QrScanner.ScanResult }>();
+  protected scanPaused = output<{ result: QrScanner.ScanResult }>();
 
   ngAfterViewInit(): void {
     this.qrScanner = new QrScanner(
