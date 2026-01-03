@@ -11,7 +11,10 @@
     background: light-dark(var(--bg-content-color-light), var(--bg-content-color-dark) );
     position: absolute;
     inset: 0;
+    bottom: 50px;
+    border-radius: 14px;
     transform: translateY(0);
+    padding-bottom: 0;
   }
 
   .qr-history {
@@ -29,6 +32,7 @@
         display: flex;
         align-items: center;
         gap: var(--space-3xs);
+        color: light-dark(var(--text-color-primary-light), var(--text-color-primary-dark));
 
         .arrow-icon {
           width: 16px;
