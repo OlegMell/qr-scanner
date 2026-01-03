@@ -1,9 +1,18 @@
 :host {
   padding: var(--padding-m);
-  padding-top: 25px;
   position: relative;
   display: block;
   margin-top: auto;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(10px);
+
+  &.expanded {
+    z-index: 10;
+    background: light-dark(var(--bg-content-color-light), var(--bg-content-color-dark) );
+    position: absolute;
+    inset: 0;
+    transform: translateY(0);
+  }
 
   .qr-history {
 
@@ -11,6 +20,26 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+
+      &-toggle {
+        background: transparent;
+        border: none;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: var(--space-3xs);
+
+        .arrow-icon {
+          width: 16px;
+          height: 16px;
+          background: url("../../../../public/arrow_up.svg") no-repeat center center;
+
+          &.expanded {
+            transform: rotate(180deg);
+          }
+        }
+      }
     }
 
     &-list {

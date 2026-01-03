@@ -29,7 +29,7 @@
 
   .footer {
     z-index: 10;
-    border-radius: 12px 12px 0 0;
+    border-radius: 14px 14px 0 0;
     height: 60px;
     position: fixed;
     display: flex;
@@ -38,6 +38,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--bg-content-color);
+    background-color: light-dark(var(--bg-content-color-light), var(--bg-content-color-dark) );
   }
 }

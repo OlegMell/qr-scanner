@@ -1,6 +1,10 @@
 <div class="qr-history-header">
-  <h3>Scan history</h3>
-  <button editListButton class="edit-button"></button>
+  <button class="qr-history-header-toggle" (click)="toggle()">
+    Scan history <span [class]="`arrow-icon ${isExpanded() ? 'expanded' : ''}`"></span>
+  </button>
+  @if (qrCodes().length) {
+    <button editListButton class="edit-button"></button>
+  }
 </div>
 <ul class="qr-history-list">
   @for (qr of qrCodes(); track qr) {

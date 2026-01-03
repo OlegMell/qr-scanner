@@ -2,9 +2,14 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 89dvh;
   transition: all 0.5s ease-in-out;
   padding-bottom: 60px;
+}
+
+.qr-button {
+  position: absolute;
+  top: -10px;
 }
 
 .thumbnail {
