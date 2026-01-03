@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, TemplateRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ScanButton } from '../components/scan-button/scan-button';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-layout',
@@ -7,8 +9,19 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './layout.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    RouterOutlet
+    RouterOutlet,
+    ScanButton,
+    NgTemplateOutlet
   ],
 })
 export class Layout {
+
+  footerTmpl = signal<TemplateRef<void> | undefined>(undefined);
+
+  protected handleRouteChange(e: any): void {
+    console.log(e);
+    if (e && e.footerTmpl) {
+      this.footerTmpl.set(e.footerTmpl());
+    }
+  }
 }

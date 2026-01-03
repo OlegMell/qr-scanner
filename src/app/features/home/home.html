@@ -8,4 +8,6 @@
 
 <app-qr-history/>
 
-<button class="qr-button" qrScanner (click)="toggleQrScanner()"></button>
+<ng-template #footerTmpl>
+  <button class="qr-button" qrScanner (click)="toggleQrScanner()"></button>
+</ng-template>

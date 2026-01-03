@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  contentChild,
+  effect,
+  inject,
+  signal,
+  TemplateRef,
+  viewChild
+} from '@angular/core';
 import QrScanner from 'qr-scanner';
 
 import { QrHistory } from '../qr-history/qr-history';
@@ -22,6 +31,14 @@ export class Home {
   private readonly qrStorage: BaseQrStorage = inject(LocalQrStorageService);
 
   protected isScannerShown = signal(false);
+  protected footerTmpl = viewChild<TemplateRef<void>>('footerTmpl');
+
+  constructor() {
+    effect(() => {
+      console.log(this.footerTmpl());
+
+    });
+  }
 
   protected toggleQrScanner(): void {
     this.isScannerShown.update(curr => !curr);

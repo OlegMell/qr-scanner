@@ -1,5 +1,5 @@
 {
-  "name": "21demo",
+  "name": "qr-scan-save",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

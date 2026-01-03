@@ -2,6 +2,10 @@
   <h1 class="header-title">QR Saver</h1>
 </header>
 <main class="main">
-  <router-outlet/>
+  <router-outlet (activate)="handleRouteChange($event)"/>
 </main>
-<footer class="footer"></footer>
+@if (footerTmpl()) {
+  <footer class="footer">
+    <ng-container *ngTemplateOutlet="footerTmpl()"/>
+  </footer>
+}

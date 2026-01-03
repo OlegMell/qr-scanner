@@ -5,13 +5,14 @@
   display: block;
   margin-top: auto;
 
-  .edit-button {
-    right: 0;
-    top: -20px;
-    position: absolute;
-  }
-
   .qr-history {
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     &-list {
       list-style: none;
 

@@ -1,4 +1,7 @@
-<button editListButton class="edit-button"></button>
+<div class="qr-history-header">
+  <h3>Scan history</h3>
+  <button editListButton class="edit-button"></button>
+</div>
 <ul class="qr-history-list">
   @for (qr of qrCodes(); track qr) {
     <li><a [href]="qr">{{ qr }}</a></li>
